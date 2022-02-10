@@ -1,12 +1,13 @@
 // dependencies
+require('module-alias/register')
 var express = require('express');
 //const { response } = require('express');
-const { Logger } = require('./util/logger.js');
-var { healthProbeHandler } = require('./handlers/health.js');
-var { helloHandler } = require('./handlers/hello.js');
-var { privateForwarder } = require('./handlers/privateForwarder.js');
-var { githubForwarder } = require('./handlers/githubForwarder.js');
-var { onpremForwarder } = require('./handlers/onpremForwarder.js');
+const { Logger } = require('@util/logger.js');
+var { healthProbeHandler } = require('@handlers/health.js');
+var { helloHandler } = require('@handlers//hello.js');
+var { privateForwarder } = require('@handlers/privateForwarder.js');
+var { githubForwarder } = require('@handlers/githubForwarder.js');
+var { onpremForwarder } = require('@handlers/onpremForwarder.js');
 // params
 const appPort = process.env.HELLOER_PORT || 8080;
 // app 

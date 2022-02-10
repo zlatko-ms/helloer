@@ -1,5 +1,5 @@
-const { Logger } = require('../util/logger.js');
-var { responseBuilder }  = require('../util/response.js');
+const { Logger } = require('@util/logger.js');
+var { responseBuilder }  = require('@util/response.js');
 const url= require('url');
 const axios = require('axios');
 

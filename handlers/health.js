@@ -1,7 +1,7 @@
 
 
-const { Logger } = require('../util/logger.js');
-var { responseBuilder }  = require('../util/response.js');
+const { Logger } = require('@util/logger.js');
+var { responseBuilder }  = require('@util/response.js');
 
 module.exports.healthProbeHandler = function(req,res) {
     Logger.info("recv probe request");
