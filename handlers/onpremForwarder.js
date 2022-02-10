@@ -14,7 +14,7 @@ module.exports.onpremForwarder = function (req,res) {
     axios.get(privateForwardedUrl).then(resAxios => {
         responsePayload["onprem_status"]="success";
         responsePayload["onprem_response"]=resAxios.data;
-        res.json(respayloadRelay);
+        res.json(responsePayload);
         Logger.info("sent response for onprem relay");
       })
       .catch(err => {
