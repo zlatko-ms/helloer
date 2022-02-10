@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "start": "node app.js",
-    "app:clean": "rm -rf node_modules/* && rm -f helloer.log",
+    "app:clean": "rm -rf node_modules/* && rm -f helloer.log && rm -f helloer.dist.tar.gz",
     "app:init": "npm install",
-    "app:run": "node app.js"
+    "app:start": "node app.js",
+    "app:package": "tar cfz helloer.dist.tar.gz util handlers app.js start.sh package.json README.md node_modules"
   },
   "dependencies": {
     "axios": "^0.25.0",

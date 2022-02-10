@@ -18,7 +18,7 @@ In this use case you'd like to deploy the workload on it's hosting infrastructur
 
 In order to do that you can simply hit the **'/connectivity/local'** endpoint of the workload and get yourself a short response JSON payload.
 
-#### Public SaaS connectivity
+#### Public/SaaS connectivity
 
 In this use case you'd like to deploy the workload on it's hosting infrastructure and to make sure it has connectivity to external, publicly hosted SaaS solutions.
 
@@ -78,11 +78,11 @@ All response payloads will contain at least the identification of the backend, a
 
 ```json
 {
- "backend-id":"helloer-a71efe0c-1c33-4957-a298-55fbf52a575e",
- "request-source-ip":"::1",
- "response-id":"fc379c43-ee70-4be9-b03d-33380aa4196c",
- "response-date":"2022-02-10T10:27:15.761Z"
- }
+  "backend-id": "helloer-6d8a3c0a-fcdd-465e-a980-48f5e3462833",
+  "request-source-ip": "::ffff:127.0.0.1",
+  "response-id": "8843d16f-775c-4332-a911-4ccf37a11252",
+  "response-date": "2022-02-10T10:43:47.534Z"
+}
 ```
 
 The **'response-id'** and **'response-date'** fields will be re-generated for each request, helping to track the responses behind routing/redirection services.
@@ -91,14 +91,56 @@ The **'response-id'** and **'response-date'** fields will be re-generated for ea
 
 When the workload will reach for an external system (spoke, saas solution, onprem), the payload will be extended with attributes named **<connectivity.type-status>** , providing the status of the bounced call and **<connectivity.type-response>** providing the payload response from the external system.
 
-For instance, when addressing another spoke the payload will look similar to the following : 
+For instance, when addressing another spoke helloer, the payload will look similar to the following : 
+
+```json
+{
+  "backend-id": "helloer-6d8a3c0a-fcdd-465e-a980-48f5e3462833",
+  "request-source-ip": "::ffff:127.0.0.1",
+  "response-id": "d85ea02c-5a84-4d00-897b-1ec5d3f1041d",
+  "response-date": "2022-02-10T10:42:50.164Z",
+  "spoke_status": "success",
+  "spoke_response": {
+    "backend-id": "spoker-2ffcb186-5e9c-4431-9d4a-9157304fe2f1",
+    "request-source-ip": "::ffff:127.0.0.1",
+    "response-id": "17adc02c-6722-413e-bcda-9e56e7a80cb2",
+    "response-date": "2022-02-10T10:42:50.168Z",
+    "message": "hello"
+  }
+}
+```
 
 
 ### Starting the app
 
 Clone the repo, eventually override the environnement variables then perform the following commands : 
 
+```bash
+npm run app:clean
+npm run app:init
+npm run app:start
+```
+
+A **start.sh** script is also provided and is intended to run the app on **Linux** VMs in detached mode using the following cmd line : 
+
+```bash
+nohup ./start.sh &
+```
+
 ## Packaging
 
-A docker Container is available on the Docker hub
+### Generate binary package
 
+You can build a binary package ready to run using the following commands : 
+
+```bash
+npm run app:clean
+npm run app:init
+npm run app:package
+```
+
+This sequence will create an archive named **helloer.dist.tar.gz** which you can use on any VM provided you already have a node/npm installation.
+
+## Use docker hub
+
+TBC
