@@ -1,4 +1,4 @@
-# Helloer
+# Helloer, a tiny workload to test your cloud connectivity
 
 ## Motivation 
 
@@ -141,6 +141,6 @@ npm run app:package
 
 This sequence will create an archive named **helloer.dist.tar.gz** which you can use on any VM provided you already have a node/npm installation.
 
-## Use docker hub
+### Use docker image
 
-TBC
+For containerized deployements you can use the image available on the [Docker Hub](https://hub.docker.com/repository/docker/zlatkoa/helloer)
