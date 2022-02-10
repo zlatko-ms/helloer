@@ -12,31 +12,35 @@ This is exactly the purpose of this workload, that can be deployed on most of th
 
 ## Features
 
-#### Workload Reach
+The following diagram illustrates a usage of the Helloer for poc-ing the network and security aspects of an Azure ESLZ design, however it can be accomadated for pretty much any Cloud : 
+
+![image](doc/helloer-use-cases.png)
+
+### Public Ingress Connectivity
 
 In this use case you'd like to deploy the workload on it's hosting infrastructure and to call it from a certain place of your cloud architecture, or even test public ingress connectivity to your workload.
 
 In order to do that you can simply hit the **'/connectivity/local'** endpoint of the workload and get yourself a short response JSON payload.
 
-#### Public/SaaS connectivity
+### Public Egress Connectivity
 
 In this use case you'd like to deploy the workload on it's hosting infrastructure and to make sure it has connectivity to external, publicly hosted SaaS solutions.
 
 In order to do that you can simply hit the **'/connectivity/public'** endpoint of the workload which will in turn call the Github API to list the repos of a given user. It is a conveniant way for testing the egress public connectivity and can be also used to highlight all the security (NAT, FW) that will be applied on such workloads.
 
-#### Private Spoke connectivity
+### Private Spoke Connectivity
 
 In this use case you'd like to deploy the workload on it's hosting infrastructure and to make sure it has connectivity to other LZs in your cloud scope. In Azure it would bind to the notion of "spoke" , and you would usually need to traverse the Hub part ( mainly the Connectivity subscription of the Azure ESLZ).
 
 In order to do that you can simply hit the **'/connectivity/spoke'** endpoint of the workload which will in turn call another Helloer or any other http level server placed in another spoke. You can override the transitive url via an evnronnement property.
 
-#### On Prem Connectivity 
+### Private On Prem Connectivity 
 
 In this use case you'd like to deploy the workload on it's hosting infrastructure and to make sure it has connectivity to your on premises workloads. In this case you're going to be testing the transversal of private hybrid connectivity trunks ( such as Azure Express route) and also the security enforcements on this path ( usually traversing the Azure HUB Connetivity ESLZ subscription).
 
 In order to do that you can simply hit the **'/connectivity/onprem'** endpoint of the workload which will in turn call another Helloer or any other http level server placed in another spoke. You can override the transitive url via an evnronnement property. You can also extend and override the current handler to write something more complex then a simple HTTP hit.
 
-#### Health Probes
+### Health Probes
 
 In this use case you'd like to deploy the workload on an infrastructure that lives behind a Load Balancer. It can be Kubernetes, VM Sets or any other scale-out technology. 
 
@@ -46,10 +50,13 @@ In order to integrate with those infrastructures you can use the  **'/health'** 
 
 ## Code 
 
-The code is pretty staightfoward and easy to update. 
-The pattern is that the app.js is your main entry point while the http handlers are stored in the handlers directory.
-In the util directory you'll find some utility modules such as logging and http response builder.
-A simple Docker file is provided to package the workload as a container and to host it wherever you need.
+The code is pretty staightfoward and easy to update : 
+
+* **app.js** is the main application entry point 
+* http handlers are stored under the **handlers** directory
+* utility modules (logger, response builder) are stored under the **util** directory
+
+A simple Docker file, located in the root folder, is used for packaging the Helloer as a container so you can to host it on any kind of cloud infra.
 
 ## Usage 
 
@@ -98,7 +105,7 @@ The **'response-id'** and **'response-date'** fields will be re-generated for ea
 
 #### Specific Reponse Payloads
 
-When the workload will reach for an external system (spoke, saas solution, onprem), the payload will be extended with attributes named **<connectivity.type-status>** , providing the status of the bounced call and **<connectivity.type-response>** providing the payload response from the external system.
+When the workload will reach for an external system (spoke, saas solution, onprem), the payload will be extended with attributes named **<connectivity.type_status>** , providing the status of the bounced call and **<connectivity.type_response>** providing the payload response from the external system.
 
 For instance, when addressing another spoke helloer, the payload will look similar to the following : 
 
@@ -130,7 +137,7 @@ npm run app:init
 npm run app:start
 ```
 
-A **start.sh** script is also provided and is intended to run the app on **Linux** VMs in detached mode using the following cmd line : 
+A **start.sh** script is also provided and is intended to run the app on a **Linux** VMs in detached mode using the following cmd line : 
 
 ```bash
 nohup ./start.sh &
