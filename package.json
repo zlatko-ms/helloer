@@ -1,0 +1,19 @@
+{
+  "name": "helloer",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node app.js",
+    "app:clean": "rm -rf node_modules/* && rm -f helloer.log",
+    "app:init": "npm install",
+    "app:run": "node app.js"
+  },
+  "dependencies": {
+    "axios": "^0.25.0",
+    "cookie-parser": "~1.4.4",
+    "debug": "~4.3.2",
+    "express": "~4.17.1",
+    "uuid": "8.3.2",
+    "winston": "3.3.3"
+  }
+}
