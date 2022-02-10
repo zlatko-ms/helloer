@@ -69,6 +69,15 @@ The following table lists the used environnement variables :
 | HELLOER_FORWARD_PRIVATE_URL         | http://localhost:8080/connectity/private         | URL to hit to test spoke to spoke connectivity, change the value to fit the deployed helloer in another spoke |
 |HELLOER_FORWARD_ONPREM_URL   | http://my.host.is:9086/whatever  | Used for onprem test, obvioulsy you'll have to override that one with a valid url exposed on prem    |
 
+### HTTP Endpoints 
+
+| Endpoint                | Usage                     |
+|-------------------------|---------------------------|
+| /health                 | health probe for containerized infra |
+| /connectivity/local     | hello responder |
+| /connectivity/public    | translates calls to github api |
+| /connectivity/spoke     | translates calls to other spoke http server (you can use a dedicated helloer as well) |
+| /connectivity/onprem    | translates calls to on prem http server (uou can use a dedicated helloer as well) |
 
 ### HTTP Responses
 
