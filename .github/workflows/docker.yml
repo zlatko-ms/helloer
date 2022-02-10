@@ -8,7 +8,7 @@ on:
 
 jobs:
   dockerBuild:
-    name: Build Docker Image and Publish to Docker Hub
+    name: Build & Push Docker Image
 
     runs-on: ubuntu-latest
     env:
