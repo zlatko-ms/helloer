@@ -11,7 +11,7 @@
     "app:dockerize": "docker build -t $npm_package_name:$npm_package_version ."
   },
   "dependencies": {
-    "axios": "^0.25.0",
+    "axios": "^0.26.0",
     "cookie-parser": "~1.4.4",
     "debug": "~4.3.2",
     "express": "~4.17.1",
