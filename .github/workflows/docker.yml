@@ -20,7 +20,7 @@ jobs:
     - name: Get version 
       run: |
         export VERTAG=`npm --silent run app:version`
-        echo "RELEASE=$VERTAG" >> $GITHUB_ENV"
+        echo "RELEASE=$VERTAG" >> $GITHUB_ENV
 
     - name: Check version
       run: |
