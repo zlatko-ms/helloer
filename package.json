@@ -8,7 +8,8 @@
     "app:init": "npm install",
     "app:start": "node app.js",
     "app:package": "tar cfz helloer-dist-$npm_package_version.tgz util handlers app.js start.sh package.json README.md node_modules",
-    "app:dockerize": "docker build -t $npm_package_name:$npm_package_version ."
+    "app:dockerize": "docker build -t $npm_package_name:$npm_package_version .",
+    "app:version": "echo $npm_package_version"
   },
   "dependencies": {
     "axios": "^0.26.0",
