@@ -68,9 +68,8 @@ The following table lists the used environnement variables :
 
 | Env Var Name                        | Default Value      | Purpose                                                      |
 |-------------------------------------|--------------------|--------------------------------------------------------------|
-| HELLOER_LOGFILE                     | helloer.log        | name of the default log file, override to fit your needs     |
 | HELLOER_PORT                        | 8080               | The http port to serve                                       |
-| HELLOER_BACKEND_TYPE                | helloer            | The type of the backend, will appear in the reponse payload  | 
+| HELLOER_BACKEND_TYPE                | helloer            | The type of the backend, will determine the log filename and appear in the reponse payload  | 
 | HELLOER_BACKEND_ID                  | generated UUID     | The id of the backend, will appear in the reponse payload    | 
 | HELLOER_FORWARDER_GITHUB_USERNAME   | funkomatic         | Used as github user to list it's public repos, SaaS test    |
 | HELLOER_FORWARD_PRIVATE_URL         | http://localhost:8080/connectity/private         | URL to hit to test spoke to spoke connectivity, change the value to fit the deployed helloer in another spoke |
@@ -94,14 +93,15 @@ All response payloads will contain at least the identification of the backend, a
 
 ```json
 {
-  "backend-id": "helloer-6d8a3c0a-fcdd-465e-a980-48f5e3462833",
-  "request-source-ip": "::ffff:127.0.0.1",
-  "response-id": "8843d16f-775c-4332-a911-4ccf37a11252",
-  "response-date": "2022-02-10T10:43:47.534Z"
+  "backend_type": "helloer",
+  "backend_id": "helloer-6d8a3c0a-fcdd-465e-a980-48f5e3462833",
+  "request_source_ip": "::ffff:127.0.0.1",
+  "response_id": "8843d16f-775c-4332-a911-4ccf37a11252",
+  "response_date": "2022-02-10T10:43:47.534Z"
 }
 ```
 
-The **'response-id'** and **'response-date'** fields will be re-generated for each request, helping to track the responses behind routing/redirection services.
+The **'response_id'** and **'response_date'** fields will be re-generated for each request, helping to track the responses behind routing/redirection services.
 
 #### Specific Reponse Payloads
 
@@ -111,16 +111,18 @@ For instance, when addressing another spoke helloer, the payload will look simil
 
 ```json
 {
-  "backend-id": "helloer-6d8a3c0a-fcdd-465e-a980-48f5e3462833",
-  "request-source-ip": "::ffff:127.0.0.1",
-  "response-id": "d85ea02c-5a84-4d00-897b-1ec5d3f1041d",
-  "response-date": "2022-02-10T10:42:50.164Z",
+  "backend_type": "helloer",
+  "backend_id": "helloer-6d8a3c0a-fcdd-465e-a980-48f5e3462833",
+  "request_source_ip": "::ffff:127.0.0.1",
+  "response_id": "d85ea02c-5a84-4d00-897b-1ec5d3f1041d",
+  "response_date": "2022-02-10T10:42:50.164Z",
   "spoke_status": "success",
   "spoke_response": {
-    "backend-id": "spoker-2ffcb186-5e9c-4431-9d4a-9157304fe2f1",
-    "request-source-ip": "::ffff:127.0.0.1",
-    "response-id": "17adc02c-6722-413e-bcda-9e56e7a80cb2",
-    "response-date": "2022-02-10T10:42:50.168Z",
+    "backend_type": "spoker",
+    "backend_id": "spoker-2ffcb186-5e9c-4431-9d4a-9157304fe2f1",
+    "request_source_ip": "::ffff:127.0.0.1",
+    "response_id": "17adc02c-6722-413e-bcda-9e56e7a80cb2",
+    "response_date": "2022-02-10T10:42:50.168Z",
     "message": "hello"
   }
 }
