@@ -2,7 +2,7 @@ name: Docker packaging
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, versioning_refactor ]
   pull_request:
     branches: [ main ]
 
