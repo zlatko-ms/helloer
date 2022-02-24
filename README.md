@@ -156,7 +156,7 @@ A **start.sh** script is also provided and is intended to run the app on a **Lin
 nohup ./start.sh &
 ```
 
-## Logs 
+### Logs 
 
 The application will produce a log file which naming depends on the value of the *HELLOER_BACKEND_TYPE* environnement variable, the log file pattern being *HELLOER_BACKEND_TYPE*.log.
 
