@@ -80,7 +80,7 @@ The following table lists the used environnement variables :
 | Endpoint                | Usage                     |
 |-------------------------|---------------------------|
 | /health                 | health probe for containerized infra, returns HTTP code 200 if running |
-| /connectivity/local     | helloer responder, siply says hello |
+| /connectivity/local     | helloer responder, simply says hello |
 | /connectivity/public    | translates calls to github api |
 | /connectivity/spoke     | translates calls to other spoke http server (you can use a dedicated helloer as well) |
 | /connectivity/onprem    | translates calls to on prem http server (uou can use a dedicated helloer as well) |
