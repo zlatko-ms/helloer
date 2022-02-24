@@ -200,7 +200,6 @@ In order to get the container simply issue the following command :
 
 ```bash
 docker pull zlatkoa/helloer:1.0.1
-helloer-dist-1.0.0.tgz
 ```
 
 You can also build your own image using the provided Dockerfile by issuing, for instance : 
