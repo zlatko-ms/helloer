@@ -139,10 +139,37 @@ npm run app:init
 npm run app:start
 ```
 
+And expect an output silmilar to the following : 
+
+```bash
+> helloer@1.0.1 app:start
+> node app.js
+
+2022-02-24 09:38:29-99 [info] (helloer) starting backend
+2022-02-24 09:38:30-00 [info] (helloer) backend started, listening on port=8080
+```
+Note the *(helloer)* tag that is defined by the *HELLOER_BACKEND_TYPE* environnement variable.
+
 A **start.sh** script is also provided and is intended to run the app on a **Linux** VMs in detached mode using the following cmd line : 
 
 ```bash
 nohup ./start.sh &
+```
+
+## Logs 
+
+The application will produce a log file which naming depends on the value of the *HELLOER_BACKEND_TYPE* environnement variable, the log file pattern being *HELLOER_BACKEND_TYPE*.log.
+
+example :
+
+```bash
+export HELLOER_BACKEND_TYPE=webapp1
+npm run app:start
+```
+
+```bash
+ls *.log
+webapp1.log
 ```
 
 ## Packaging
