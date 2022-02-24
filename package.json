@@ -3,7 +3,6 @@
   "version": "1.0.1",
   "private": true,
   "scripts": {
-    "start": "node app.js",
     "app:clean": "rm -rf node_modules/* && rm -f *.log && rm -f helloer-dist.*.gz",
     "app:init": "npm install",
     "app:start": "node app.js",
