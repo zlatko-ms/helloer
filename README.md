@@ -196,6 +196,13 @@ helloer-dist-1.0.0.tgz
 
 For containerized deployements you can use the image available on the [Docker Hub](https://hub.docker.com/repository/docker/zlatkoa/helloer). It is updated by the Github CI/CD worklow on each code change.
 
+In order to get the container simply issue the following command : 
+
+```bash
+docker pull zlatkoa/helloer:1.0.1
+helloer-dist-1.0.0.tgz
+```
+
 You can also build your own image using the provided Dockerfile by issuing, for instance : 
 
 ```bash
