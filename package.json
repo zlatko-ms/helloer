@@ -1,6 +1,6 @@
 {
   "name": "helloer",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "private": true,
   "scripts": {
     "app:clean": "rm -rf node_modules/* && rm -f *.log && rm -f helloer-dist.*.gz",
