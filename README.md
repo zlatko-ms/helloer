@@ -186,9 +186,9 @@ npm run app:package
 
 This sequence will create an archive named **helloer-dist-vMAJ.vMIN.vREL.tgz** to be used on any VM provided you already have a node/npm installation. 
 
-For version 1.0.0 , you'll see the following file created : 
+For version 1.0.3 , you'll see the following file created : 
 ```bash
-helloer-dist-1.0.0.tgz
+helloer-dist-1.0.3.tgz
 ```
 
 
@@ -199,7 +199,7 @@ For containerized deployements you can use the image available on the [Docker Hu
 In order to get the container simply issue the following command : 
 
 ```bash
-docker pull zlatkoa/helloer:1.0.1
+docker pull zlatkoa/helloer:1.0.3
 ```
 
 You can also build your own image using the provided Dockerfile by issuing, for instance : 
