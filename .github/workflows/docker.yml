@@ -1,4 +1,4 @@
-name: Docker packaging
+name: Build and Docker packaging
 
 on:
   push:
