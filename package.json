@@ -1,14 +1,15 @@
 {
   "name": "helloer",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "private": true,
   "scripts": {
     "app:clean": "rm -rf node_modules/* && rm -f *.log && rm -f helloer-dist.*.gz",
     "app:init": "npm install",
-    "app:start": "node app.js",
-    "app:package": "tar cfz helloer-dist-$npm_package_version.tgz util handlers app.js start.sh package.json README.md node_modules",
+    "app:start": "node app/app.js",
+    "app:package": "tar cfz helloer-dist-$npm_package_version.tgz app/util app/handlers app/app.js start.sh package.json README.md node_modules",
     "app:dockerize": "docker build -t $npm_package_name:$npm_package_version .",
-    "app:version": "echo $npm_package_version"
+    "app:version": "echo $npm_package_version",
+    "app:test": "mocha --reporter spec"
   },
   "dependencies": {
     "axios": "^0.27.2",
@@ -19,8 +20,13 @@
     "uuid": "8.3.2",
     "winston": "3.8.1"
   },
+  "devDependencies": {
+    "node-mocks-http" : "^1.11.0",
+    "mocha" : "^10.0.0",
+    "chai" : "^4.3.6"
+  },
   "_moduleAliases": {
-    "@util": "util",
-    "@handlers": "handlers"
+    "@util": "app/util",
+    "@handlers": "app/handlers"
   }
 }
