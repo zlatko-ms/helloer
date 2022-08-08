@@ -1,4 +1,4 @@
-name: Docker packaging
+name: Build and Docker packaging
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
       - 'doc/**'
       - README.md
   pull_request:
-    branches: [ main ]
+    branches: [ main, 13-prepare-unit-test-structure ]
     paths-ignore:
       - 'doc/**'
       - README.md
@@ -25,6 +25,13 @@ jobs:
       run: |
         export VERTAG=`npm --silent run app:version`
         echo "RELEASE_TAG=$VERTAG" >> $GITHUB_ENV
+
+    - name: Build and test nodejs app
+      uses: actions/setup-node@v3
+      with:
+        node-version: 17
+      run: npm run app:init
+      run: npm run app:test
 
     - name: Log in to Docker Hub
       uses: docker/login-action@v1
