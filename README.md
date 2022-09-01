@@ -8,7 +8,9 @@ During those projects you will be required to validate all of your LZ design, mo
 
 In order to test your connectivity and eventually deliver a POC/Study you'll need a tiny workload to deploy on different places of the cloud and hybrid infrastructure.
 
-This is exactly the purpose of this workload, that can be deployed on most of the hosting infrastructures (VM, Functions, Kubernetes, Application services) and can be used to test direct or transitive connectivity to your Cloud and hybrid architecture. 
+This is exactly the purpose of the Helloer that can be deployed on most of the hosting infrastructures (VM, Functions, Kubernetes, Application services) and used to test direct or transitive connectivity to your Cloud and hybrid architecture. 
+
+Might you need to generate some traffic on the Helloer, you can eventually use the companion [Greeter](https://github.com/zlatko-ms/pgreeter) app that will act as a client of the helloer in otder to demonstrate/assess the connectivity constraints.
 
 ## Features
 
