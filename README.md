@@ -90,6 +90,7 @@ The following table lists the used environnement variables :
 | /connectivity/public    | translates calls to github api |
 | /connectivity/spoke     | translates calls to other spoke http server (you can use a dedicated helloer as well) |
 | /connectivity/onprem    | translates calls to on prem http server (uou can use a dedicated helloer as well) |
+| /perfs    | exposition of basic aggregated Request Per Second metric as well as breakdown per service |
 
 ### HTTP Responses
 
