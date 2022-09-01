@@ -8,7 +8,9 @@ During those projects you will be required to validate all of your LZ design, mo
 
 In order to test your connectivity and eventually deliver a POC/Study you'll need a tiny workload to deploy on different places of the cloud and hybrid infrastructure.
 
-This is exactly the purpose of this workload, that can be deployed on most of the hosting infrastructures (VM, Functions, Kubernetes, Application services) and can be used to test direct or transitive connectivity to your Cloud and hybrid architecture. 
+This is exactly the purpose of the Helloer that can be deployed on most of the hosting infrastructures (VM, Functions, Kubernetes, Application services) and used to test direct or transitive connectivity to your Cloud and hybrid architecture. 
+
+Might you need to generate some traffic on the Helloer, you can eventually use the companion [Greeter](https://github.com/zlatko-ms/pgreeter) app that will act as a client of the helloer in otder to demonstrate/assess the connectivity constraints.
 
 ## Features
 
@@ -47,6 +49,10 @@ In this use case you'd like to deploy the workload on an infrastructure that liv
 Most of the available infrastructures will require healthchecks, being it on the Kub level or simply as a backend probe for most of the LBs ( think backend health on Azure App Gateways).
 
 In order to integrate with those infrastructures you can use the  **'/health'** endpoint of the workload that will return a small payload with a 200 HTTP status, which is more then sufficient to deploy the workload in those conditions
+
+### Performance Tracking
+
+The application integrates very basic perfromance tracking that simply exposes the aggregated RPS (request per second) metric. It can come handy in order to check quota limits or basic network connectivity performance, usefull when benching different Load Balancer solutions.
 
 ## Code 
 

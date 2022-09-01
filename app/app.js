@@ -13,23 +13,17 @@ var { perfHandler } = require('@handlers/perfs.js')
 // configuration
 var { appPort , forwardSpokeUrl, forwardOnPremUrl } = require('@util/configuration.js');
 
-// service handler functions 
-var handlerConnectivityLocal = function(req,res) { helloHandler(req,res,"connectivity/local") }
-var handlerConnectivitySpoke = function(req,res) { forwardCallHandler(req,res,"connectivity/spoke",forwardSpokeUrl,"spoke")}
-var handlerConnectivityOnPrem = function(req,res) { forwardCallHandler(req,res,"connectivity/onprem",forwardOnPremUrl,"onprem")}
-var handlerConnectivityPublic = function(req,res) { githubForwarder(req,res,"connectivity/public") }
-
 // app 
 Logger.info("starting backend");
 var app = express();
 
-// url routing
+// exposed services
 app.get('/health', healthProbeHandler)
 app.get('/perfs',perfHandler)
-app.get('/connectivity/local', handlerConnectivityLocal);
-app.get('/connectivity/spoke', handlerConnectivitySpoke );
-app.get('/connectivity/onprem', handlerConnectivityOnPrem);
-app.get('/connectivity/public', handlerConnectivityPublic);
+app.get('/connectivity/local', (req,res) => helloHandler(req,res,"connectivity/local") );
+app.get('/connectivity/spoke', (req,res) => forwardCallHandler(req,res,"connectivity/spoke",forwardSpokeUrl,"spoke"));
+app.get('/connectivity/onprem', (req,res) => forwardCallHandler(req,res,"connectivity/onprem",forwardOnPremUrl,"onprem"));
+app.get('/connectivity/public', (req,res) => githubForwarder(req,res,"connectivity/public")); 
 
 app.listen(appPort);
 Logger.info("backend started, listening on port="+appPort);
