@@ -3,15 +3,17 @@ const { Logger } = require('@util/logger.js');
 var { responseBuilder }  = require('@util/response.js');
 const url= require('url');
 const axios = require('axios');
-
+const { BackendPerformanceTracker } = require('@util/perf.js');
 const githubUsername = process.env.HELLOER_FORWARDER_GITHUB_USERNAME || "funkomatic";
 
-module.exports.githubForwarder = function (req,res) {
+module.exports.githubForwarder = function (req,res,serviceName) {
  
     Logger.info("recv public forwarding request, retrieving "+githubUsername+" repos from github");
 
     var callUrl = "https://api.github.com/users/"+githubUsername+"/repos";
     var responsePayload=responseBuilder(req);
+
+    BackendPerformanceTracker.addHit(serviceName)
     
     axios.get(callUrl).then(resAxios => {
       var repoCount = resAxios.data.length;

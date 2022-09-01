@@ -1,12 +1,14 @@
 const { Logger } = require('@util/logger.js');
-const { forwardSpokeUrl, forwardOnPremUrl} = require('@util/configuration.js')
 var { responseBuilder }  = require('@util/response.js');
 const axios = require('axios');
+const { BackendPerformanceTracker } = require('@util/perf.js');
 
-function forwardCall(req,res,forwardUrl,label) {
+module.exports.forwardCallHandler = function(req,res,serviceName,forwardUrl,label) {
 
     Logger.info("recv private forwarding request, using private endpoint "+forwardUrl);
+    
     var responsePayload=responseBuilder(req);
+    BackendPerformanceTracker.addHit(serviceName);
 
     axios.get(forwardUrl).then(resAxios => {
         responsePayload[label+"_status"]="success";
@@ -20,7 +22,7 @@ function forwardCall(req,res,forwardUrl,label) {
         responsePayload[label+"_response"]=err;
         res.status(500).json(responsePayload);
       });
+
 };
 
-module.exports.onpremForwarder = function (req,res) { return forwardCall(req,res,forwardOnPremUrl,"onprem") }
-module.exports.spokeForwarder = function (req,res) { return forwardCall(req,res,forwardSpokeUrl,"spoke") }
+
