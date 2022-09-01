@@ -1,6 +1,6 @@
 {
   "name": "helloer",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "private": true,
   "scripts": {
     "app:clean": "rm -rf node_modules/* && rm -f *.log && rm -f helloer-dist.*.gz",
@@ -12,6 +12,7 @@
     "app:test": "mocha --reporter spec"
   },
   "dependencies": {
+    "date-format" : "^4.0.13",
     "axios": "^0.27.2",
     "cookie-parser": "~1.4.4",
     "debug": "~4.3.2",

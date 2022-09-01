@@ -3,6 +3,7 @@
 const { Logger } = require('@util/logger.js');
 var { responseBuilder }  = require('@util/response.js');
 const { logProbeCalls } = require('@util/configuration.js')
+const { BackendPerformanceTracker } = require('@util/perf.js');
 
 module.exports.healthProbeHandler = function(req,res) {
     if (logProbeCalls) {

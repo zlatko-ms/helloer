@@ -10,12 +10,12 @@ const unknown = "unknown"
 
 describe("Response Builder", function() {
     describe("Source Address Fetching", function() {
-      it("returns 'unknown' if source address cannot be fetched", function() {
+      it("returns 'unknown' if source address cannot be fetched", () => {
         var request  = httpMocks.createRequest({});
         var responsePayload = responseBuilder(request);
         expect(responsePayload.request_source_ip).to.equal(unknown)
       });
-      it("fetches the source address from request header map", function() {
+      it("fetches the source address from request header map", () => {
         var request  = httpMocks.createRequest({
             headers : {
                 'x-forwarded-for' : localhost
@@ -25,7 +25,7 @@ describe("Response Builder", function() {
         expect(responsePayload.request_source_ip).to.equal(localhost)
 
       });
-      it("feches the source address from the request socket map", function()  {
+      it("feches the source address from the request socket map", () =>  {
         var request  = httpMocks.createRequest({
            
             socket : {

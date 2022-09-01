@@ -50,6 +50,10 @@ Most of the available infrastructures will require healthchecks, being it on the
 
 In order to integrate with those infrastructures you can use the  **'/health'** endpoint of the workload that will return a small payload with a 200 HTTP status, which is more then sufficient to deploy the workload in those conditions
 
+### Performance Tracking
+
+The application integrates very basic perfromance tracking that simply exposes the aggregated RPS (request per second) metric. It can come handy in order to check quota limits or basic network connectivity performance, usefull when benching different Load Balancer solutions.
+
 ## Code 
 
 The code is pretty staightfoward and easy to update : 
@@ -86,6 +90,7 @@ The following table lists the used environnement variables :
 | /connectivity/public    | translates calls to github api |
 | /connectivity/spoke     | translates calls to other spoke http server (you can use a dedicated helloer as well) |
 | /connectivity/onprem    | translates calls to on prem http server (uou can use a dedicated helloer as well) |
+| /perfs    | exposition of basic aggregated Request Per Second metric as well as breakdown per service |
 
 ### HTTP Responses
 
