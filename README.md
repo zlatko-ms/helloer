@@ -2,15 +2,17 @@
 
 ## Motivation 
 
-When working on the cloud deployement, and more specifically when dealing with moves to Cloud you often end with a hybrid architecture that usually has it's own (customer driven) complexity.
+When it comes to the digital transformation projects and more specifically when dealing with large Move to Cloud projects, you’ll often end up with a (customer driven) complex hybrid architecture.
 
-During those projects you will be required to validate all of your LZ design, mostly on the network connectity & security levels.
+In this context you’ll be required to validate the LZ design, and in most cases, the emphasis will be on the network & connectivity aspects.
 
-In order to test your connectivity and eventually deliver a POC/Study you'll need a tiny workload to deploy on different places of the cloud and hybrid infrastructure.
+To test the connectivity and eventually deliver a POC, a Study or a to validate a design update, you’ll need a pair of workloads that can work together to validate the traffic connectivity.
 
-This is exactly the purpose of the Helloer that can be deployed on most of the hosting infrastructures (VM, Functions, Kubernetes, Application services) and used to test direct or transitive connectivity to your Cloud and hybrid architecture. 
+The Helloer is designed to fulfill this role.
 
-Might you need to generate some traffic on the Helloer, you can eventually use the companion [Greeter](https://github.com/zlatko-ms/pgreeter) app that will act as a client of the helloer in otder to demonstrate/assess the connectivity constraints.
+It is a tiny HTTP backend that can be deployed on almost any type of compute infrastructure (Kubernetes, Functions, App Services, even VMs ) , that responds to simple HTTP requests that can be resolved locally or forwarded to another endpoint in order to test transitive connectivity use cases.
+
+In order to generate traffic on the Helloer, you can use it’s companion app the  [Greeter](https://github.com/zlatko-ms/pgreeter), that will address HTTP requests to the Helloer backend.
 
 ## Features
 
@@ -58,9 +60,10 @@ The application integrates very basic perfromance tracking that simply exposes t
 
 The code is pretty staightfoward and easy to update : 
 
-* **app.js** is the main application entry point 
-* http handlers are stored under the **handlers** directory
-* utility modules (logger, response builder) are stored under the **util** directory
+* **app/app.js** is the main application entry point 
+* http handlers are stored under the **app/handlers** directory
+* utility modules (logger, response builder) are stored under the **app/util** directory
+* unitary tests are stored in the **test/** directory and define a simple yet usefull test harness for internal utility modules
 
 A simple Docker file, located in the root folder, is used for packaging the Helloer as a container so you can to host it on any kind of cloud infra.
 
