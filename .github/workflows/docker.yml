@@ -20,11 +20,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-
-    - name: Read version
-      run: |
-        export VERTAG=`npm --silent run app:version`
-        echo "RELEASE_TAG=$VERTAG" >> $GITHUB_ENV
+    - uses: zlatko-ms/envarfiles@v3
+      with:
+        paths: ./package.json
+        select: version
 
     - name: Setup node
       uses: actions/setup-node@v3
@@ -49,4 +48,4 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: |
-            zlatkoa/helloer:${{ env.RELEASE_TAG }}
+            zlatkoa/helloer:${{ env.version }}
