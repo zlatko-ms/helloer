@@ -22,7 +22,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Read version
-      uses: zlatko-ms@envarfiles@v3
+      uses: zlatko-ms/envarfiles@v3
       with:
         select: version
         paths: ./package.json
